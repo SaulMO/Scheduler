@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.cell.PropertyValueFactory?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<GridPane alignment="center" hgap="10" vgap="10" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+
+    <Label text="Scheduler (Despachador)" GridPane.columnIndex="0" GridPane.columnSpan="3" GridPane.halignment="CENTER" GridPane.rowIndex="0" />
+
+    <VBox alignment="TOP_CENTER" spacing="15" GridPane.columnIndex="0" GridPane.rowIndex="1">
+        <Label text="Procesos a Analizar" />
+        <HBox alignment="CENTER" spacing="10" GridPane.columnIndex="0">
+            <TextField fx:id="txtDuracion" prefWidth="65.0" promptText="Duración" />
+            <TextField fx:id="txtLlegada" prefWidth="65" promptText="Llegada" />
+        </HBox>
+        <Button fx:id="btnIngresarProceso" alignment="CENTER" text="Ingresar Proceso" />
+        <ScrollPane hbarPolicy="NEVER" vbarPolicy="AS_NEEDED">
+            <TextArea fx:id="txtAreaProcesos" prefHeight="170" prefWidth="200"/>
+        </ScrollPane>
+        <HBox spacing="10" alignment="CENTER">
+            <Button fx:id="btnStartStop" text="Simular" />
+            <Button fx:id="btnContar" text="Contar Quantum"/>
+        </HBox>
+        <Label fx:id="lblTiempo" text="Tiempo =  00:00" />
+        <Label fx:id="lblCPU" text="CPU : Empty" />
+    </VBox>
+
+    <ScrollPane hbarPolicy="NEVER" vbarPolicy="AS_NEEDED" GridPane.columnIndex="1" GridPane.rowIndex="1">
+      <TableView fx:id="tblViewPCB">
+        <columns>
+            <TableColumn text="PID">
+                <cellValueFactory>
+                    <PropertyValueFactory property="noIdentificador" />
+                </cellValueFactory>
+            </TableColumn>
+            <TableColumn text="Estado">
+                <cellValueFactory>
+                    <PropertyValueFactory property="estado" />
+                </cellValueFactory>
+            </TableColumn>
+            <TableColumn text="Ubicacion">
+                <cellValueFactory>
+                    <PropertyValueFactory property="ubicacion" />
+                </cellValueFactory>
+            </TableColumn>
+            <TableColumn text="Duración">
+                <cellValueFactory>
+                    <PropertyValueFactory property="tiempo" />
+                </cellValueFactory>
+            </TableColumn>
+        </columns>
+      </TableView>
+    </ScrollPane>
+
+    <HBox spacing="10" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="BOTTOM">
+        <VBox alignment="CENTER" spacing="10">
+            <Label text="Memoria" textAlignment="CENTER" />
+            <ScrollPane hbarPolicy="NEVER" vbarPolicy="AS_NEEDED">
+                <TextArea fx:id="txtAreaMemoria" prefHeight="350" prefWidth="70" />
+            </ScrollPane>
+        </VBox>
+        <VBox alignment="CENTER" spacing="10">
+            <Label text="Salida" textAlignment="CENTER" />
+            <ScrollPane hbarPolicy="NEVER" vbarPolicy="AS_NEEDED">
+                <TextArea fx:id="txtAreaSalida" prefHeight="350" prefWidth="70" />
+            </ScrollPane>
+        </VBox>
+    </HBox>
+
+</GridPane>
